@@ -1,0 +1,15 @@
+.work {
+    &__title {
+    }
+    &__body {
+        &__item {
+            height: 300px;
+            width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            &__background {
+                min-width: 100%;
+            }
+        }
+    }
+}

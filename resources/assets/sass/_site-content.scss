@@ -1,0 +1,102 @@
+//React transition group
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
+
+/* Site content */
+.content {
+    position: relative;
+    max-width: $site_width;
+    min-height: 100vh;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(grey, 0.5);
+}
+h1 {
+    font-family: Playfair Display;
+    font-size: 48px;
+    font-weight: 100;
+    color: white;
+}
+h2 {
+}
+h3 {
+}
+h4 {
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+}
+h5 {
+    font-family: Dancing Script;
+    font-size: 33px;
+    color: white;
+}
+h6 {
+    font-family: Dancing Script;
+    font-size: 23px;
+    color: white;
+}
+p {
+}
+a {
+    text-decoration: none !important;
+}
+
+@media (max-width: $breakpoint_sm) {
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+    }
+    h3 {
+    }
+    h4 {
+        font-size: 16px;
+    }
+    h5 {
+        font-size: 25px;
+    }
+    h6 {
+        font-size: 16px;
+    }
+    p {
+    }
+}
+@media (max-width: $breakpoint_md) {
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+    }
+    h3 {
+    }
+    h4 {
+        font-size: 16px;
+    }
+    h5 {
+        font-size: 25px;
+    }
+    h6 {
+        font-size: 16px;
+    }
+    p {
+    }
+}
+// General
