@@ -1,14 +1,71 @@
 .work {
+    z-index: 10;
     &__title {
     }
     &__body {
+        display: flex;
+        margin: 50px 0;
         &__item {
+            position: relative;
             height: 300px;
             width: 300px;
             margin: 0 auto;
             overflow: hidden;
+            cursor: pointer;
+            &__text {
+                color: white;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0 auto;
+                background: rgba(grey, 0.4);
+                border: 3px solid white;
+                width: 75%;
+                &__title {
+                    z-index: 100;
+                    display: inline-block;
+                }
+                &__description {
+                }
+            }
+            &__btn {
+                position: relative;
+                top: 0;
+                padding: 10px 20px;
+                width: 50%;
+                align-self: center;
+                font-weight: bold;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            &__edit {
+                background: rgba(yellow, 0.3);
+                &:hover {
+                    background: rgba(yellow, 0.8);
+                }
+            }
+
+            &__delete {
+                background: rgba(red, 0.3);
+                &:hover {
+                    background: rgba(red, 0.8);
+                }
+            }
             &__background {
-                min-width: 100%;
+                position: absolute;
+                width: 100%;
+                min-height: 100%;
+                background-color: white;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                z-index: -1;
+                filter: grayscale(100%);
+                transition: 1s filter linear;
+            }
+            &:hover > .work__body__item__background {
+                filter: none;
             }
         }
     }

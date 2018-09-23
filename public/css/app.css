@@ -203,7 +203,7 @@ video {
   min-height: 100vh;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #A9A9A9;
+  background-color: #a9a9a9;
   color: #808080;
   font-size: 16px;
 }
@@ -652,6 +652,7 @@ video {
   margin: 0 auto;
   overflow: hidden;
   background: rgba(128, 128, 128, 0.5);
+  z-index: 0;
 }
 
 h1 {
@@ -1140,14 +1141,92 @@ a {
   margin: 22px auto 25px auto;
 }
 
+.work {
+  z-index: 10;
+}
+
+.work__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 50px 0;
+}
+
 .work__body__item {
+  position: relative;
   height: 300px;
   width: 300px;
   margin: 0 auto;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.work__body__item__text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin: 0 auto;
+  background: rgba(128, 128, 128, 0.4);
+  border: 3px solid white;
+  width: 75%;
+}
+
+.work__body__item__text__title {
+  z-index: 100;
+  display: inline-block;
+}
+
+.work__body__item__btn {
+  position: relative;
+  top: 0;
+  padding: 10px 20px;
+  width: 50%;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.work__body__item__edit {
+  background: rgba(255, 255, 0, 0.3);
+}
+
+.work__body__item__edit:hover {
+  background: rgba(255, 255, 0, 0.8);
+}
+
+.work__body__item__delete {
+  background: rgba(255, 0, 0, 0.3);
+}
+
+.work__body__item__delete:hover {
+  background: rgba(255, 0, 0, 0.8);
 }
 
 .work__body__item__background {
-  min-width: 100%;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  background-color: white;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0;
+  z-index: -1;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-transition: 1s -webkit-filter linear;
+  transition: 1s -webkit-filter linear;
+  transition: 1s filter linear;
+  transition: 1s filter linear, 1s -webkit-filter linear;
+}
+
+.work__body__item:hover > .work__body__item__background {
+  -webkit-filter: none;
+          filter: none;
 }
 

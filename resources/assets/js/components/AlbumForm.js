@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 export class AlbumForm extends React.Component {
     constructor(props) {
@@ -6,7 +7,7 @@ export class AlbumForm extends React.Component {
         this.toggleFormDisplay = this.toggleFormDisplay.bind(this);
         this.state = {
             formDisplay: false,
-            title: "",
+            name: "",
             description: ""
         };
     }
@@ -24,7 +25,17 @@ export class AlbumForm extends React.Component {
     }
     submit(e) {
         e.preventDefault();
-        console.log(this.state);
+        axios
+            .post("album", {
+                name: this.state.name,
+                description: this.state.description
+            })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
     render() {
@@ -52,15 +63,15 @@ export class AlbumForm extends React.Component {
                         <label className="album-form__content__title-label">
                             <h3>Virsraksts:</h3>
                             <input
-                                name="title"
+                                name="name"
                                 className="album-form__content__title-label_input"
                                 type="text"
                                 placeholder="Virsraksts"
-                                value={this.state.title}
+                                value={this.state.name}
                                 onChange={e => this.change(e)}
                             />
                             <h2 className="album-form__content__title-label_preview">
-                                {this.state.title}
+                                {this.state.name}
                             </h2>
                         </label>
                         <label className="album-form__content__description-label">

@@ -18,7 +18,7 @@ class PhotosController extends Controller
      */
     public function index($album_id)
     {
-        $photos = Album::findOrFail($album_id)->photos()->paginate(10);
+        $photos = Album::findOrFail($album_id)->photos()->paginate(5);
         return PhotosResource::collection($photos);
     }
 

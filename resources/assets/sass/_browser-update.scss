@@ -7,7 +7,7 @@
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    z-index: 9999999;                            
+    z-index: 9999999;
 }
 .update_browser_container {
     display: table-cell;
@@ -16,7 +16,7 @@
     min-height: 100vh;
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: #A9A9A9;
+    background-color: #a9a9a9;
     color: #808080;
     font-size: 16px;
 }
@@ -44,7 +44,7 @@
     letter-spacing: 0.01em;
     line-height: 28px;
     margin-bottom: 8px;
-}            
+}
 .browser_icon_wrap {
     margin-right: -30px;
     margin-left: -30px;
@@ -75,15 +75,21 @@
     font-size: 16px;
     color: #808080;
 }
-.firefox .browser_icon { background-image: url('../img/firefox.png'); }
+.firefox .browser_icon {
+    background-image: url("../img/firefox.png");
+}
 .chrome .browser_icon {
-    background-image: url('../img/chrome.png');
+    background-image: url("../img/chrome.png");
     background-size: 110px 110px;
 }
-.opera .browser_icon { background-image: url('../img/opera.png'); }
-.safari .browser_icon { background-image: url('../img/safari.png'); }
+.opera .browser_icon {
+    background-image: url("../img/opera.png");
+}
+.safari .browser_icon {
+    background-image: url("../img/safari.png");
+}
 .edge .browser_icon {
-    background-image: url('../img/edge.png');
+    background-image: url("../img/edge.png");
     background-size: 85px 85px;
     left: -8px;
     bottom: -4px;
@@ -102,8 +108,8 @@
 .close_announcement:hover,
 .close_announcement:active,
 .close_announcement:focus {
-  text-decoration: none;
-  color: #fff!important;
+    text-decoration: none;
+    color: #fff !important;
 }
 @media (max-width: 767px) {
     .browser-icon-wrap {
@@ -114,8 +120,10 @@
         width: 153px;
         padding-right: 15px;
         padding-left: 15px;
-    }                
+    }
 }
 @media (max-width: 480px) {
-    .update_browser { max-width: 100%; }                
+    .update_browser {
+        max-width: 100%;
+    }
 }

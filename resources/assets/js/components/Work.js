@@ -2,58 +2,73 @@ import React from "react";
 import axios from "axios";
 
 import { AlbumForm } from "./AlbumForm";
+import { AlbumItem } from "./AlbumItem";
 
 export class Work extends React.Component {
     constructor() {
         super();
         this.state = {
-            auth: true,
-            albums: []
+            auth: false,
+            albums: [],
+            openAlbum: {}
         };
     }
+    //Get albums with all photos
     componentDidMount() {
-        axios.get("http://photo.test/api/albums").then(res => {
-            console.log(res);
+        axios.defaults.baseURL = "http://photo.test/api/";
+        axios.get("albums").then(res => {
+            // console.log(res);
             this.setState({
                 albums: res.data
             });
         });
     }
-    getRandomImage(album) {
-        const min = 0;
-        const max = album.photos.length;
-        console.log(max);
-        return Math.floor(Math.random() * (max - min)) + min;
+    albumHandler(album) {
+        let link = "photos/" + album.id;
+        axios.get(link).then(res => {
+            this.setState({
+                openAlbum: {
+                    id: album.id,
+                    name: album.name,
+                    description: album.description,
+                    res: res
+                }
+            });
+        });
+    }
+    back() {
+        this.setState({
+            openAlbum: {}
+        });
     }
 
     render() {
-        return (
-            <div className="work">
-                <h1 className="work__title">Galerijas</h1>
-                {this.state.auth ? <AlbumForm /> : null}
-                <ul className="work__body">
-                    {this.state.albums.map(album => (
-                        <li className="work__body__item" key={album.id}>
-                            <h3 className="work__body__item__title">
-                                {album.name}
-                            </h3>
-                            <h5 className="work__body__item__description">
-                                {album.description}
-                            </h5>
-                            <img
-                                className="work__body__item__background"
-                                src={
-                                    "./storage/images/album" +
-                                    album.id +
-                                    "/" +
-                                    album.photos[this.getRandomImage(album)]
-                                        .photo
-                                }
+        if (!this.state.openAlbum.res) {
+            return (
+                <div className="work">
+                    <h1 className="work__title">Galerijas</h1>
+                    {this.state.auth ? <AlbumForm /> : null}
+                    <div className="work__body">
+                        {this.state.albums.map(album => (
+                            <AlbumItem
+                                onClick={() => this.albumHandler(album)}
+                                key={album.id}
+                                album={album}
+                                auth={this.state.auth}
                             />
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
+                        ))}
+                    </div>
+                </div>
+            );
+        } else {
+            console.log(this.state.openAlbum);
+
+            return (
+                <div className="album">
+                    <button onClick={() => this.back()}>Atpakaļ</button>
+                    <h1 className="work__title">{}</h1>
+                </div>
+            );
+        }
     }
 }
